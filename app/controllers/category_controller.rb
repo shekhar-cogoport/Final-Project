@@ -1,6 +1,7 @@
 class CategoryController < ApplicationController
     # skip_before_action :verify_authenticity_token
     # skip_before_action :require_login, only:[:create,:show,:delete]
+    before_action :authorize_request, except: [:show, :create, :delete,:articlecategory]
     def create
         category=Category.create(name: params[:name]);
     end
